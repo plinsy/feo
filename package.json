@@ -1,6 +1,6 @@
 {
   "name": "feojs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A React hook that converts speech from the microphone to text and makes it available to your React components",
   "type": "module",
   "main": "./dist/feojs.umd.cjs",
