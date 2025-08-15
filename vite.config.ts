@@ -10,7 +10,7 @@ export default defineConfig({
     lib: {
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       name: 'Feo',
-      fileName: 'feo',
+      fileName: 'feojs',
       formats: ['es', 'umd']
     },
     rollupOptions: {

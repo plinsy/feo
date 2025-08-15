@@ -13,7 +13,7 @@ A modern, TypeScript-first React hook that converts speech from the microphone t
 
 Feo is a spiritual successor to `react-speech-recognition`, built from the ground up with TypeScript, modern React patterns, and best practices.
 
-[![npm version](https://img.shields.io/npm/v/feo.svg)](https://www.npmjs.com/package/feo)
+[![npm version](https://img.shields.io/npm/v/feojs.svg)](https://www.npmjs.com/package/feojs)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -31,22 +31,22 @@ Feo is a spiritual successor to `react-speech-recognition`, built from the groun
 ## 📦 Installation
 
 ```bash
-npm install feo
+npm install feojs
 ```
 
 ```bash
-yarn add feo
+yarn add feojs
 ```
 
 ```bash
-pnpm add feo
+pnpm add feojs
 ```
 
 ## 🚀 Quick Start
 
 ```tsx
 import React from 'react'
-import SpeechRecognition, { useSpeechRecognition } from 'feo'
+import SpeechRecognition, { useSpeechRecognition } from 'feojs'
 
 const VoiceRecorder = () => {
   const {
@@ -80,7 +80,7 @@ Feo supports sophisticated voice command recognition with pattern matching:
 
 ```tsx
 import React, { useState } from 'react'
-import SpeechRecognition, { useSpeechRecognition } from 'feo'
+import SpeechRecognition, { useSpeechRecognition } from 'feojs'
 
 const VoiceAssistant = () => {
   const [message, setMessage] = useState('')

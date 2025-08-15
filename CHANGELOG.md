@@ -55,4 +55,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ES Module: 13.74 kB (3.74 kB gzipped)
 - UMD Bundle: 9.63 kB (3.09 kB gzipped)
 
-[1.0.0]: https://github.com/yourusername/feo/releases/tag/v1.0.0
+[1.0.0]: https://github.com/yourusername/feojs/releases/tag/v1.0.0

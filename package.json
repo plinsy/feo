@@ -1,16 +1,16 @@
 {
-  "name": "feo",
+  "name": "feojs",
   "version": "1.0.0",
   "description": "A React hook that converts speech from the microphone to text and makes it available to your React components",
   "type": "module",
-  "main": "./dist/feo.umd.cjs",
-  "module": "./dist/feo.js",
+  "main": "./dist/feojs.umd.cjs",
+  "module": "./dist/feojs.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/feo.js",
-      "require": "./dist/feo.umd.cjs"
+      "import": "./dist/feojs.js",
+      "require": "./dist/feojs.umd.cjs"
     }
   },
   "files": [
@@ -30,7 +30,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/feo.git"
+    "url": "https://github.com/yourusername/feojs.git"
   },
   "scripts": {
     "dev": "vite",

@@ -2,7 +2,7 @@
 
 # Feo Development Guidelines
 
-This is a TypeScript React library called "feo" that provides speech recognition capabilities using the Web Speech API. It's designed as a modern, type-safe alternative to react-speech-recognition.
+This is a TypeScript React library called "feojs" that provides speech recognition capabilities using the Web Speech API. It's designed as a modern, type-safe alternative to react-speech-recognition.
 
 ## Key Design Principles
 
