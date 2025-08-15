@@ -169,7 +169,7 @@ interface SpeechRecognitionHookState {
 
 ## 📄 License
 
-MIT © [Your Name](https://github.com/yourusername)
+MIT © [plinsy](https://github.com/plinsy)
 
 ## 🙏 Acknowledgments
 
