@@ -1,6 +1,6 @@
 {
   "name": "feojs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React hook that converts speech from the microphone to text and makes it available to your React components",
   "type": "module",
   "main": "./dist/feojs.umd.cjs",
@@ -26,11 +26,11 @@
     "voice",
     "microphone"
   ],
-  "author": "Your Name",
+  "author": "plinsy",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/feojs.git"
+    "url": "https://github.com/plinsy/feojs.git"
   },
   "scripts": {
     "dev": "vite",
