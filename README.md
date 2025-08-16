@@ -8,6 +8,8 @@ Feo is a spiritual successor to `react-speech-recognition`, built from the groun
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+Want to know how it works? Well, ask his parent directly [react-speech-recognition](https://github.com/JamesBrill/react-speech-recognition) by James Brill
+
 ## ✨ Features
 
 - 🎯 **TypeScript First**: Fully typed API with excellent IntelliSense support
@@ -169,7 +171,7 @@ interface SpeechRecognitionHookState {
 
 ## 📄 License
 
-MIT © [plinsy](https://github.com/plinsy)
+MIT
 
 ## 🙏 Acknowledgments
 
