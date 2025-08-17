@@ -179,6 +179,55 @@ MIT
 - Built with [Vite](https://vitejs.dev/) and [TypeScript](https://www.typescriptlang.org/)
 - Tested with [Vitest](https://vitest.dev/) and [Testing Library](https://testing-library.com/)
 
+## 🛠️ Development
+
+### Automated Release Scripts
+
+This project includes automated scripts for version bumping and releasing:
+
+```bash
+# Preview what would be released (dry run)
+npm run push:dry
+
+# Standard release (with confirmation)
+npm run push
+
+# Force release (skip confirmations)
+npm run push:force
+```
+
+The scripts automatically:
+- Analyze git commits since the last tag
+- Determine version bump type (major/minor/patch) based on conventional commits
+- Update package.json version
+- Run tests and build the project
+- Create git commit and tag
+- Push changes to remote repository
+
+See [`scripts/README.md`](scripts/README.md) for detailed documentation.
+
+### Manual Development
+
+```bash
+# Start development server
+npm run dev
+
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Build the library
+npm run build
+
+# Lint code
+npm run lint
+
+# Type check
+npm run build:types
+```
+
 ---
 
 Made with ❤️ for the React community

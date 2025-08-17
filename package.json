@@ -43,7 +43,10 @@
     "start": "npm run build:demo && npm run preview:demo",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "push": "powershell -ExecutionPolicy Bypass -File scripts/push.ps1",
+    "push:dry": "powershell -ExecutionPolicy Bypass -File scripts/push.ps1 -DryRun",
+    "push:force": "powershell -ExecutionPolicy Bypass -File scripts/push.ps1 -Force"
   },
   "dependencies": {
     "react": "^19.1.1",
