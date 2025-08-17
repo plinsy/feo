@@ -8,34 +8,33 @@ function App() {
   const commands = [
     {
       command: 'I would like to order *',
-      callback: (food: string) =>
-        setMessage((prev) => `Your order is for: ${food}`)
+      callback: (food: string) => setMessage(`Your order is for: ${food}`)
     },
     {
       command: 'The weather is :condition today',
       callback: (condition: string) =>
-        setMessage((prev) => `Today, the weather is ${condition}`)
+        setMessage(`Today, the weather is ${condition}`)
     },
     {
       command: 'My top sports are * and *',
       callback: (sport1: string, sport2: string) =>
-        setMessage((prev) => `#1: ${sport1}, #2: ${sport2}`)
+        setMessage(`#1: ${sport1}, #2: ${sport2}`)
     },
     {
       command: 'Pass the salt (please)',
-      callback: () => setMessage((prev) => 'My pleasure')
+      callback: () => setMessage('My pleasure')
     },
     {
       command: ['Hello', 'Hi'],
       callback: ({ command }: { command: string }) =>
-        setMessage((prev) => `Hi there! You said: "${command}"`),
+        setMessage(`Hi there! You said: "${command}"`),
       matchInterim: true
     },
     {
       command: 'clear',
       callback: ({ resetTranscript }: { resetTranscript: () => void }) => {
         resetTranscript()
-        setMessage((prev) => '')
+        setMessage('')
       }
     }
   ]
@@ -97,18 +96,18 @@ function App() {
 
       <div className="output">
         <h2>Transcript ({transcript.length} letters):</h2>
-
-        {/* {message && (
-            <>
-              <h2>Command Response:</h2>
-              <div className="message-box">{message}</div>
-            </>
-          )} */}
       </div>
 
       <div className="transcript-box">
         {transcript || <em>Start speaking...</em>}
       </div>
+
+      {message && (
+        <>
+          <h2>Command Response:</h2>
+          <div className="message-box">{message}</div>
+        </>
+      )}
 
       {/* <div className="instructions">
           <h3>Try these commands:</h3>
