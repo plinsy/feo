@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feo Speech Recognition Demo - Duplicate Word Filtering</title>
+</head>
+<body>
+    <h1>Feo Speech Recognition - Duplicate Word Filtering Demo</h1>
+    
+    <div>
+        <h2>Original Transcript:</h2>
+        <p id="original">Hello Hello Hello Hello Hello Hello Hello How you doing Hello How you doing Baby</p>
+    </div>
+    
+    <div>
+        <h2>After Duplicate Removal:</h2>
+        <p id="filtered"></p>
+    </div>
+    
+    <div>
+        <h2>Speech Recognition Test:</h2>
+        <button onclick="startListening()">Start Listening</button>
+        <button onclick="stopListening()">Stop Listening</button>
+        <button onclick="resetTranscript()">Reset</button>
+        <div>
+            <h3>Raw Transcript:</h3>
+            <p id="raw-transcript"></p>
+            <h3>Filtered Transcript:</h3>
+            <p id="clean-transcript"></p>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the utility function
+        function removeDuplicateWords(transcript) {
+            if (!transcript || !transcript.trim()) return '';
+            const words = transcript.trim().split(/\s+/);
+            const filteredWords = [];
+            
+            for (let i = 0; i < words.length; i++) {
+                const currentWord = words[i].toLowerCase().replace(/[^\w]/g, '');
+                const previousWord = i > 0 ? words[i - 1].toLowerCase().replace(/[^\w]/g, '') : null;
+                
+                if (currentWord !== previousWord) {
+                    filteredWords.push(words[i]);
+                }
+            }
+            
+            return filteredWords.join(' ');
+        }
+
+        // Demo the filtering
+        const original = document.getElementById('original').textContent;
+        const filtered = removeDuplicateWords(original);
+        document.getElementById('filtered').textContent = filtered;
+
+        // Simple speech recognition demo (if available)
+        let recognition = null;
+        let isListening = false;
+
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            
+            recognition.onresult = function(event) {
+                let interimTranscript = '';
+                let finalTranscript = '';
+                
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript;
+                    } else {
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+                
+                const rawText = finalTranscript + interimTranscript;
+                const cleanText = removeDuplicateWords(rawText);
+                
+                document.getElementById('raw-transcript').textContent = rawText;
+                document.getElementById('clean-transcript').textContent = cleanText;
+            };
+        }
+
+        window.startListening = function() {
+            if (recognition && !isListening) {
+                recognition.start();
+                isListening = true;
+            }
+        };
+
+        window.stopListening = function() {
+            if (recognition && isListening) {
+                recognition.stop();
+                isListening = false;
+            }
+        };
+
+        window.resetTranscript = function() {
+            document.getElementById('raw-transcript').textContent = '';
+            document.getElementById('clean-transcript').textContent = '';
+        };
+    </script>
+</body>
+</html>

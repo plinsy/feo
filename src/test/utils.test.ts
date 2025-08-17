@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import type { SpeechRecognitionResultList, SpeechRecognitionResult } from '../types'
 import { 
   concatTranscripts, 
+  removeDuplicateWords,
   browserSupportsPolyfills, 
   isAndroid, 
   commandToRegExp, 
@@ -18,6 +19,37 @@ describe('Utils', () => {
       expect(concatTranscripts('', 'world')).toBe('world')
       expect(concatTranscripts('hello', '')).toBe('hello')
       expect(concatTranscripts('', '')).toBe('')
+    })
+
+    it('should remove consecutive duplicate words', () => {
+      expect(concatTranscripts('hello hello world')).toBe('hello world')
+      expect(concatTranscripts('hello hello hello world world')).toBe('hello world')
+      // Note: "Hello" appears later but is not consecutive to the first group, so it should remain
+      expect(concatTranscripts('Hello Hello Hello Hello Hello Hello Hello How you doing Hello How you doing Baby')).toBe('Hello How you doing Hello How you doing Baby')
+    })
+  })
+
+  describe('removeDuplicateWords', () => {
+    it('should remove consecutive duplicate words', () => {
+      expect(removeDuplicateWords('hello hello world')).toBe('hello world')
+      expect(removeDuplicateWords('hello hello hello world world')).toBe('hello world')
+      // Note: "Hello" appears later but is not consecutive to the first group, so it should remain
+      expect(removeDuplicateWords('Hello Hello Hello Hello Hello Hello Hello How you doing Hello How you doing Baby')).toBe('Hello How you doing Hello How you doing Baby')
+      expect(removeDuplicateWords('')).toBe('')
+      expect(removeDuplicateWords('   ')).toBe('')
+      expect(removeDuplicateWords('single')).toBe('single')
+      expect(removeDuplicateWords('different words here')).toBe('different words here')
+    })
+
+    it('should preserve case but compare case-insensitively', () => {
+      expect(removeDuplicateWords('Hello hello HELLO world')).toBe('Hello world')
+      expect(removeDuplicateWords('Test test TEST another')).toBe('Test another')
+    })
+
+    it('should handle mixed punctuation', () => {
+      // Note: "hello," and "hello" are considered the same word when punctuation is ignored
+      expect(removeDuplicateWords('hello, hello world!')).toBe('hello, world!')
+      expect(removeDuplicateWords('yes yes yes no no')).toBe('yes no')
     })
   })
 
@@ -107,7 +139,8 @@ describe('Utils', () => {
       } as unknown as SpeechRecognitionResultList
 
       const result = parseResultsToTranscript(mockResults)
-      expect(result.finalTranscript).toBe('Hello ')
+      // removeDuplicateWords will trim whitespace
+      expect(result.finalTranscript).toBe('Hello')
       expect(result.interimTranscript).toBe('world')
     })
 

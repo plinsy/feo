@@ -3,13 +3,37 @@
  */
 
 /**
- * Concatenate transcript parts with proper spacing
+ * Remove consecutive duplicate words from a transcript
+ */
+export const removeDuplicateWords = (transcript: string): string => {
+  if (!transcript || !transcript.trim()) return ''
+  
+  const words = transcript.trim().split(/\s+/)
+  const filteredWords: string[] = []
+  
+  for (let i = 0; i < words.length; i++) {
+    const currentWord = words[i].toLowerCase().replace(/[^\w]/g, '')
+    const previousWord = i > 0 ? words[i - 1].toLowerCase().replace(/[^\w]/g, '') : null
+    
+    // Only add the word if it's different from the previous word (ignoring punctuation)
+    if (currentWord !== previousWord) {
+      filteredWords.push(words[i])
+    }
+  }
+  
+  return filteredWords.join(' ')
+}
+
+/**
+ * Concatenate transcript parts with proper spacing and duplicate removal
  */
 export const concatTranscripts = (...transcriptParts: string[]): string => {
-  return transcriptParts
+  const combined = transcriptParts
     .map(t => t.trim())
     .join(' ')
     .trim()
+    
+  return removeDuplicateWords(combined)
 }
 
 /**
@@ -103,14 +127,19 @@ export const parseResultsToTranscript = (results: SpeechRecognitionResultList, r
 
   for (let i = resultIndex; i < results.length; i++) {
     const result = results[i]
+    const transcript = removeDuplicateWords(result[0].transcript)
+    
     if (result.isFinal) {
-      finalTranscript += result[0].transcript
+      finalTranscript += transcript
     } else {
-      interimTranscript += result[0].transcript
+      interimTranscript += transcript
     }
   }
 
-  return { interimTranscript, finalTranscript }
+  return { 
+    interimTranscript: removeDuplicateWords(interimTranscript), 
+    finalTranscript: removeDuplicateWords(finalTranscript) 
+  }
 }
 
 /**

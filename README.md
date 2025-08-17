@@ -1,4 +1,4 @@
-# 🎤 Feo
+# 🎤 Feo (Voice in Malagasy)
 
 A modern, TypeScript-first React hook that converts speech from the microphone to text and makes it available to your React components.
 

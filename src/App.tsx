@@ -54,7 +54,7 @@ function App() {
 
   const startListening = () =>
     SpeechRecognition.startListening({
-      continuous: true,
+      continuous: false,
       language: 'en-US'
     })
 
@@ -93,22 +93,24 @@ function App() {
           </button>
           <button onClick={resetTranscript}>Reset</button>
         </div>
+      </header>
 
-        <div className="output">
-          <h2>Transcript:</h2>
-          <div className="transcript-box">
-            {transcript || <em>Start speaking...</em>}
-          </div>
+      <div className="output">
+        <h2>Transcript ({transcript.length} letters):</h2>
 
-          {message && (
+        {/* {message && (
             <>
               <h2>Command Response:</h2>
               <div className="message-box">{message}</div>
             </>
-          )}
-        </div>
+          )} */}
+      </div>
 
-        <div className="instructions">
+      <div className="transcript-box">
+        {transcript || <em>Start speaking...</em>}
+      </div>
+
+      {/* <div className="instructions">
           <h3>Try these commands:</h3>
           <ul>
             <li>"I would like to order pizza"</li>
@@ -118,8 +120,7 @@ function App() {
             <li>"Hello" or "Hi"</li>
             <li>"clear" (to reset everything)</li>
           </ul>
-        </div>
-      </header>
+        </div> */}
     </div>
   )
 }
