@@ -34,10 +34,13 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build --mode lib",
+    "build:demo": "vite build",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
     "lint": "eslint .",
     "preview": "vite preview",
+    "preview:demo": "vite preview --outDir dist-demo",
+    "start": "npm run build:demo && npm run preview:demo",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run"
